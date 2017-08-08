@@ -1,0 +1,35 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<h1>Pins</h1>
+
+
+  <% @pins.each do |pin| %>
+  <div class="col-md-3">    
+    <div class="thumbnail">
+      <%= pin.name %>      
+      <%= image_tag(pin.photo, :style => 'img-responsive') %>
+      <%= pin.desciption %>
+      
+      <div class="btn-group btn-group-justified">
+        <%= link_to 'Show', pin, :class => 'btn btn-default' %>
+        <%= link_to 'Edit', edit_pin_path(pin), :class => 'btn btn-default' %>
+        <!-- Escondiendo las rutas-->
+        <% if user_signed_in? %>
+          <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+<br>
+
+<!-- Escondiendo las rutas-->
+<% if user_signed_in? %>
+<p>
+  <a href="<%= new_pin_path %>" class="btn btn-primary" role="button">New Pin</a>
+</p>
+<% end %>
+
+  <!--
+  <%= link_to 'New Pin', new_pin_path %>  
+  -->

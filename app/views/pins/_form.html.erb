@@ -1,0 +1,50 @@
+ <%= form_with(model: pin, local: true) do |form| %>
+  <% if pin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pin.errors.count, "error") %> prohibited this pin from being saved:</h2>
+      <ul>
+      <% pin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+<form class="form-horizontal">
+  <fieldset>
+
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name, id: :pin_name, :class =>'form-control', :placeholder => "Nombre del Pin" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :photo %>
+          <%= form.text_field :photo, id: :pin_photo, :class =>'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :desciption %>
+          <%= form.text_field :desciption, id: :pin_desciption, :class =>'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <div class="actions">
+            <%= form.submit "Crear", :class =>'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+
+  </fieldset>
+</form>
+
+<% end %>
+
